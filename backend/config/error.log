@@ -1,0 +1,329 @@
+[14-May-2026 16:13:51 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\xampp\htdocs\tajriba\backend\config\database.php:71
+Stack trace:
+#0 C:\xampp\htdocs\tajriba\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\xampp\htdocs\tajriba\backend\models\Offer.php(74): Database->execute()
+#2 C:\xampp\htdocs\tajriba\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\xampp\htdocs\tajriba\api\index.php(130): OfferController::getAll()
+#4 {main}
+  thrown in C:\xampp\htdocs\tajriba\backend\config\database.php on line 71
+[16-May-2026 15:21:13 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(131): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:22:24 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(131): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:52:36 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(131): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:55:20 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(132): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:55:54 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll(1, 12, 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(132): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:56:02 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll(1, 12, 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(132): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 15:58:14 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 17:19:24 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 19:32:47 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 19:33:00 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 19:34:05 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll(1, 12, 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 19:35:37 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(74): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 20:01:32 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(75): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 20:12:49 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(75): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[16-May-2026 20:27:36 Europe/Berlin] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php:71
+Stack trace:
+#0 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php(71): mysqli_stmt->bind_param('s', 'active')
+#1 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\models\Offer.php(75): Database->execute()
+#2 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php(18): Offer->getAll('1', '12', 'active')
+#3 C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php(129): OfferController::getAll()
+#4 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\config\database.php on line 71
+[17-May-2026 20:55:58 Europe/Berlin] [2] Undefined array key 1 in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php on line 277
+[18-May-2026 13:02:33 Europe/Berlin] [2] Undefined array key 1 in C:\xampp\htdocs\again\api\index.php on line 277
+[18-May-2026 13:02:40 Europe/Berlin] [2] Undefined array key 1 in C:\xampp\htdocs\again\api\index.php on line 277
+[18-May-2026 13:03:55 Europe/Berlin] [2] Undefined array key 1 in C:\xampp\htdocs\again\api\index.php on line 277
+[18-May-2026 16:37:16 Europe/Berlin] [2] unlink(C:\xampp\htdocs\again\backend\config/../../api/uploads/test1.png): No such file or directory in C:\xampp\htdocs\again\backend\controllers\AdminController.php on line 181
+[18-May-2026 16:37:20 Europe/Berlin] [2] unlink(C:\xampp\htdocs\again\backend\config/../../api/uploads/test2.png): No such file or directory in C:\xampp\htdocs\again\backend\controllers\AdminController.php on line 181
+[19-May-2026 12:40:27 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 12:40:27 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:01:51 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:01:51 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:02:11 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:02:11 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:15:53 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:15:53 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:20:29 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:20:29 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:23:49 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:23:49 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:24:24 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:24:24 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:24:30 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:24:30 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:25:09 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:25:09 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:30:11 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:30:11 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:31:36 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:31:36 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:31:59 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:31:59 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:33:10 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:33:10 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:34:19 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 13:34:19 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:26:21 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:26:21 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:27:27 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:27:27 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:06 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:06 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:31 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:31 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:53 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:28:53 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:29:41 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 14:29:41 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 15:49:28 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 15:49:28 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 15:53:35 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 15:53:35 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:17:11 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:17:11 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:17:54 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:17:54 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:18:20 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:18:20 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:18:29 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:18:29 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:19:21 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:19:21 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:22:02 Europe/Berlin] [2] Undefined array key "data" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[19-May-2026 16:22:02 Europe/Berlin] [2] Undefined array key "total" in C:\xampp\htdocs\again\backend\controllers\OfferController.php on line 147
+[25-May-2026 23:25:41 Europe/Berlin] [2] require_once(C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api/../backend/models/Comment.php): Failed to open stream: No such file or directory in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php on line 50
+[25-May-2026 23:25:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api/../backend/models/Comment.php' (include_path='C:\Users\pc lenovo\Desktop\xampp\php\PEAR') in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php:50
+Stack trace:
+#0 {main}
+  thrown in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\api\index.php on line 50
+[26-May-2026 00:34:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:34:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:35:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:35:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:36:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:36:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "class", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 44
+[26-May-2026 00:37:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:37:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:38:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:38:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:39:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:39:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:40:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:40:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:41:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:41:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:42:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:42:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:43:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:43:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:44:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:44:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:45:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:45:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:46:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:46:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:47:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:47:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:48:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:48:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:49:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:49:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:50:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:50:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:51:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:51:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:52:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:52:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:53:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:53:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:54:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:54:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:55:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:55:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:56:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:56:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:57:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:57:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:58:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:58:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:59:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 00:59:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:00:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:00:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:01:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:01:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:02:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:02:52 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:03:53 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:03:53 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:41 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:41 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:43 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:04:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:05:14 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 32
+[26-May-2026 01:05:44 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 20
+[26-May-2026 01:06:14 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "<", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 8
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[28-May-2026 18:12:30 Europe/Berlin] PHP Parse error:  syntax error, unexpected variable "$user", expecting "function" or "const" in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\controllers\OfferController.php on line 227
+[04-Jun-2026 13:29:56 Europe/Berlin] [FB OAuth] DB error: Unknown column 'facebook_id' in 'where clause'
+[04-Jun-2026 13:30:11 Europe/Berlin] [FB OAuth] DB error: Unknown column 'facebook_id' in 'where clause'
+[04-Jun-2026 13:30:28 Europe/Berlin] [FB OAuth] DB error: Unknown column 'facebook_id' in 'where clause'
+[05-Jun-2026 13:59:10 Europe/Berlin] [FB OAuth] DB error: Unknown column 'facebook_id' in 'where clause'
+[07-Jun-2026 02:11:52 Europe/Berlin] [MAILER] To: mahfoudeoumaima@gmail.com | Subject: ARTVOT - Password Reset Request
+[07-Jun-2026 02:11:52 Europe/Berlin] [MAILER] Body: 
+        <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;padding:20px;">
+            <h2 style="color:#D4AF37;">ARTVOT Password Reset</h2>
+            <p>Hello oumaima mahfoude,</p>
+            <p>We received a request to reset your password. Click the button below to set a new password:</p>
+            <p style="text-align:center;margin:30px 0;">
+                <a href="http://localhost/again/reset-password.html?token=71c9ea04fcfaf1b9fd04da8e1098ffc312acae98504a1840b01f6506ca22c61a05192bee55f41155cd22dcca76568873a73a039440363806d51c557a1cc18b15" style="background:linear-gradient(135deg,#D4AF37,#A37F1A);color:#000;padding:14px 32px;text-decoration:none;border-radius:10px;font-weight:bold;display:inline-block;">Reset Password</a>
+            </p>
+            <p style="color:#888;font-size:0.85rem;">This link expires in 30 minutes. If you did not request this, please ignore this email.</p>
+            <hr style="border:none;border-top:1px solid #333;margin:20px 0;">
+            <p style="color:#666;font-size:0.8rem;">&mdash; ARTVOT Team</p>
+        </div>
+[07-Jun-2026 02:11:54 Europe/Berlin] [2] mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\helpers\mailer.php on line 22
+[07-Jun-2026 02:11:54 Europe/Berlin] [MAILER] mail() failed or not available — check error.log for the reset link above.
+[07-Jun-2026 02:14:44 Europe/Berlin] =======================================================
+[07-Jun-2026 02:14:44 Europe/Berlin] [PASSWORD RESET LINK] http://localhost/again/reset-password.html?token=ea0940a9f54dc72fd96fff169b18ace3c968a9eec9a4ce729ed6db3ef9b5b785648f333f2e1eec1b32f973164ba12c8443fad809018352a418ea15dffe495c27
+[07-Jun-2026 02:14:44 Europe/Berlin] =======================================================
+[07-Jun-2026 02:14:44 Europe/Berlin] [MAILER] To: mahfoudeoumaima@gmail.com | Subject: ARTVOT - Password Reset Request
+[07-Jun-2026 02:14:44 Europe/Berlin] [MAILER] Body: 
+        <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;padding:20px;">
+            <h2 style="color:#D4AF37;">ARTVOT Password Reset</h2>
+            <p>Hello oumaima mahfoude,</p>
+            <p>We received a request to reset your password. Click the button below to set a new password:</p>
+            <p style="text-align:center;margin:30px 0;">
+                <a href="http://localhost/again/reset-password.html?token=ea0940a9f54dc72fd96fff169b18ace3c968a9eec9a4ce729ed6db3ef9b5b785648f333f2e1eec1b32f973164ba12c8443fad809018352a418ea15dffe495c27" style="background:linear-gradient(135deg,#D4AF37,#A37F1A);color:#000;padding:14px 32px;text-decoration:none;border-radius:10px;font-weight:bold;display:inline-block;">Reset Password</a>
+            </p>
+            <p style="color:#888;font-size:0.85rem;">This link expires in 30 minutes. If you did not request this, please ignore this email.</p>
+            <hr style="border:none;border-top:1px solid #333;margin:20px 0;">
+            <p style="color:#666;font-size:0.8rem;">&mdash; ARTVOT Team</p>
+        </div>
+[07-Jun-2026 02:14:46 Europe/Berlin] [2] mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\helpers\mailer.php on line 22
+[07-Jun-2026 02:14:46 Europe/Berlin] [MAILER] mail() failed or not available — check error.log for the reset link above.
+[07-Jun-2026 02:15:58 Europe/Berlin] =======================================================
+[07-Jun-2026 02:15:58 Europe/Berlin] [PASSWORD RESET LINK] http://localhost/again/reset-password.html?token=1f0304412d1a44a8be06c98d4631c9d0a078c2d11ba06d4e326b054e4a834ddf60b4c0d2a54d29175cf890c888137ac6a1956ccc7ab39e2f5502a5b1ded688ce
+[07-Jun-2026 02:15:58 Europe/Berlin] =======================================================
+[07-Jun-2026 02:15:58 Europe/Berlin] [MAILER] To: mahfoudeoumaima@gmail.com | Subject: ARTVOT - Password Reset Request
+[07-Jun-2026 02:15:58 Europe/Berlin] [MAILER] Body: 
+        <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;padding:20px;">
+            <h2 style="color:#D4AF37;">ARTVOT Password Reset</h2>
+            <p>Hello oumaima mahfoude,</p>
+            <p>We received a request to reset your password. Click the button below to set a new password:</p>
+            <p style="text-align:center;margin:30px 0;">
+                <a href="http://localhost/again/reset-password.html?token=1f0304412d1a44a8be06c98d4631c9d0a078c2d11ba06d4e326b054e4a834ddf60b4c0d2a54d29175cf890c888137ac6a1956ccc7ab39e2f5502a5b1ded688ce" style="background:linear-gradient(135deg,#D4AF37,#A37F1A);color:#000;padding:14px 32px;text-decoration:none;border-radius:10px;font-weight:bold;display:inline-block;">Reset Password</a>
+            </p>
+            <p style="color:#888;font-size:0.85rem;">This link expires in 30 minutes. If you did not request this, please ignore this email.</p>
+            <hr style="border:none;border-top:1px solid #333;margin:20px 0;">
+            <p style="color:#666;font-size:0.8rem;">&mdash; ARTVOT Team</p>
+        </div>
+[07-Jun-2026 02:16:00 Europe/Berlin] [2] mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\Users\pc lenovo\Desktop\xampp\htdocs\again\backend\helpers\mailer.php on line 22
+[07-Jun-2026 02:16:00 Europe/Berlin] [MAILER] mail() failed or not available — check error.log for the reset link above.

@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARTVOT | Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="api-client.js?v=2.0"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('artvot_theme');
+      if (saved === 'light') {
+        document.documentElement.classList.add('light-mode');
+        document.body && document.body.classList.add('light-mode');
+      } else if (saved === 'dark') {
+        document.documentElement.classList.remove('light-mode');
+        document.body && document.body.classList.remove('light-mode');
+      } else {
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (prefersLight) {
+          document.documentElement.classList.add('light-mode');
+          document.body && document.body.classList.add('light-mode');
+        }
+      }
+    })();
+  </script>
+  <style>
+    body { overflow-y: auto; overflow-x: hidden; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+     /* Animated luxury mesh background */
+    .login-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: var(--bg);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent 70%);
+      top: -120px; left: -120px;
+      animation: orbMove 10s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 450px; height: 450px;
+       background: radial-gradient(circle, rgba(229, 57, 53, 0.15), transparent 70%);
+      bottom: -100px; right: -100px;
+      animation: orbMove 12s ease-in-out infinite reverse;
+    }
+
+    .orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(22, 163, 74, 0.12), transparent 70%);
+      top: 40%; left: 55%;
+      animation: orbMove 8s ease-in-out infinite 2s;
+    }
+
+    @keyframes orbMove {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(30px, -20px); }
+      66% { transform: translate(-15px, 25px); }
+    }
+
+    /* Grid dot pattern overlay */
+    .grid-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+          radial-gradient(circle, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    #login-page {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(18, 18, 21, 0.85);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 28px;
+       padding: 48px 40px;
+      box-shadow: var(--shadow-lg), var(--shadow-gold), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @keyframes cardIn {
+       from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  }
+
+    .login-brand {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--pink) 50%, var(--green) 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite;
+      display: inline-block;
+    }
+
+    .login-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .login-sub {
+      font-size: 0.86rem;
+       color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .form-input-dark {
+      width: 100%;
+     padding: 13px 14px 13px 42px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: all var(--fast) var(--ease);
+    }
+
+    .form-input-dark::placeholder { color: rgba(255,255,255,0.3); }
+
+    .form-input-dark:focus {
+      outline: none;
+      border-color: var(--gold);
+       background: rgba(212, 175, 55, 0.05);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .input-wrap .icon-left {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .input-wrap .icon-right {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+     color: var(--text-muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: color var(--fast) var(--ease);
+      background: none;
+      border: none;
+    }
+
+    .input-wrap .icon-right:hover { color: var(--text); }
+
+    .forgot-row {
+      text-align: right;
+      margin-bottom: 22px;
+       margin-top: -6px;
+    }
+
+    .forgot-link {
+      font-size: 0.8rem;
+      color: var(--gold);
+      transition: opacity 0.2s;
+       font-weight: 600;
+    }
+
+    .forgot-link:hover { opacity: 0.8; }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+     background: linear-gradient(135deg, var(--gold) 0%, #A37F1A 100%);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: none;
+      cursor: pointer;
+       transition: all var(--fast) var(--ease);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-login:active { transform: translateY(0); }
+
+    .btn-login:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .social-row { display: flex; gap: 10px; }
+
+    .social-btn-login {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+     transition: all var(--fast) var(--ease);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-btn-login:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-hover);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .social-btn-login i { font-size: 1.1rem; }
+
+    .switch-text {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 24px;
+    }
+
+    .switch-text a { color: var(--gold); font-weight: 600; }
+    .switch-text a:hover { text-decoration: underline; }
+
+    /* Register section (hidden by default) */
+    #register-form-section { display: none; }
+
+    /* Forgot password section (hidden by default) */
+    #forgot-form-section { display: none; }
+
+    .success-msg {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #10B981;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .success-msg.show { display: block; }
+
+    /* Error shake */
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+
+    /* Success state */
+    .btn-login.success {
+      background: linear-gradient(135deg, var(--green), #28A870);
+      color: #000;
+      box-shadow: 0 6px 24px rgba(16,185,129,0.35);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .login-card { padding: 40px 24px; }
+      .social-row { flex-direction: column; }
+    }
+
+    /* Light Mode Overrides for Login Portal */
+    body.light-mode .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(139, 115, 85, 0.16);
+      color: var(--text);
+      box-shadow: var(--shadow-lg), var(--shadow-gold), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    }
+    body.light-mode .login-headline {
+      color: var(--text);
+    }
+    body.light-mode .login-sub {
+      color: var(--text-secondary);
+    }
+    body.light-mode .form-input-dark {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    body.light-mode .form-input-dark::placeholder {
+      color: var(--text-muted);
+    }
+    body.light-mode .form-input-dark:focus {
+      background: rgba(212, 175, 55, 0.04);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    }
+    body.light-mode .divider {
+      color: var(--text-muted);
+    }
+    body.light-mode .divider::before, body.light-mode .divider::after {
+      background: var(--border);
+    }
+    body.light-mode .social-btn-login {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: var(--border);
+      color: var(--text-secondary);
+    }
+    body.light-mode .social-btn-login:hover {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+    body.light-mode .switch-text {
+      color: var(--text-secondary);
+    }
+    body.light-mode .input-wrap .icon-left {
+      color: var(--text-secondary);
+    }
+    body.light-mode .input-wrap .icon-right {
+      color: var(--text-secondary);
+    }
+    body.light-mode .input-wrap .icon-right:hover {
+      color: var(--text);
+    }
+    body.light-mode .forgot-link {
+      color: #B8860B;
+    }
+    body.light-mode .social-btn-login svg path {
+      fill: var(--text-secondary);
+    }
+    body.light-mode .social-btn-login:hover svg path {
+      fill: var(--text);
+    }
+    body.light-mode .social-btn-login i {
+      color: var(--text-secondary) !important;
+    }
+    body.light-mode .social-btn-login:hover i {
+      color: var(--text) !important;
+    }
+    body.light-mode .error-msg {
+      background: rgba(225, 29, 72, 0.06);
+      border-color: rgba(225, 29, 72, 0.2);
+      color: var(--pink);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Atmospheric background -->
+<div class="login-bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="grid-pattern"></div>
+
+<!-- Login Page -->
+<div id="login-page">
+  <div class="login-card">
+
+    <!-- Brand -->
+    <div class="login-brand" style="text-align:center; margin-bottom:24px;">ARTVOT</div>
+
+    <!-- ── Login Form ── -->
+    <div id="login-form-section">
+      <h2 class="login-headline">Welcome back</h2>
+      <p class="login-sub">Sign in to your Design Arena account</p>
+
+      <!-- Social buttons -->
+      <div class="social-row">
+        <button class="social-btn-login" id="google-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          Google
+        </button>
+        <button class="social-btn-login" id="facebook-btn">
+          <i class='bx bxl-facebook' style="color:#1877F2;font-size:1.2rem;"></i>
+          Facebook
+        </button>
+      </div>
+
+      <div class="divider">sign in with email</div>
+
+      <div class="error-msg" id="login-error"></div>
+      <div class="input-wrap">
+        <i class='bx bx-envelope icon-left'></i>
+        <input type="email" id="login-email" class="form-input-dark" placeholder="your@email.com" autocomplete="email">
+      </div>
+
+      <!-- Password -->
+      <div class="input-wrap">
+        <i class='bx bx-lock-alt icon-left'></i>
+        <input type="password" id="login-password" class="form-input-dark" placeholder="Your password" autocomplete="current-password">
+        <button class="icon-right" id="toggle-pw" type="button" aria-label="Toggle password visibility">
+          <i class='bx bx-show'></i>
+        </button>
+      </div>
+
+      <!-- Forgot password -->
+      <div class="forgot-row">
+        <a href="#" class="forgot-link" id="forgot-pw-link">Forgot password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button class="btn-login" id="login-submit-btn">
+        Sign In <i class='bx bx-right-arrow-alt'></i>
+      </button>
+
+      <p class="switch-text">
+        Don't have an account? <a href="#" id="toggle-to-register">Create one</a>
+      </p>
+    </div>
+
+    <!-- ── Forgot Password Form ── -->
+    <div id="forgot-form-section">
+      <h2 class="login-headline">Reset password</h2>
+      <p class="login-sub">Enter your email and we'll send you a reset link</p>
+
+      <div class="error-msg" id="forgot-error"></div>
+      <div class="success-msg" id="forgot-success"></div>
+
+      <div class="input-wrap">
+        <i class='bx bx-envelope icon-left'></i>
+        <input type="email" id="forgot-email" class="form-input-dark" placeholder="your@email.com" autocomplete="email">
+      </div>
+
+      <button class="btn-login" id="forgot-submit-btn">
+        Send Reset Link <i class='bx bx-right-arrow-alt'></i>
+      </button>
+
+      <p class="switch-text">
+        Remember your password? <a href="#" id="forgot-back-to-login">Sign in</a>
+      </p>
+    </div>
+
+    <!-- ── Register Form ── -->
+    <div id="register-form-section">
+      <h2 class="login-headline">Create account</h2>
+      <p class="login-sub">Join the ultimate design arena</p>
+
+      <div class="error-msg" id="register-error"></div>
+
+      <div class="input-wrap">
+        <i class='bx bx-user icon-left'></i>
+        <input type="text" id="reg-username" class="form-input-dark" placeholder="Username" autocomplete="username">
+      </div>
+
+      <div class="input-wrap">
+        <i class='bx bx-user-circle icon-left'></i>
+        <input type="text" id="reg-name" class="form-input-dark" placeholder="Full name" autocomplete="name">
+      </div>
+
+      <div class="input-wrap">
+        <i class='bx bx-envelope icon-left'></i>
+        <input type="email" id="reg-email" class="form-input-dark" placeholder="your@email.com" autocomplete="email">
+      </div>
+
+      <div class="input-wrap">
+        <i class='bx bx-lock-alt icon-left'></i>
+        <input type="password" id="reg-password" class="form-input-dark" placeholder="Create a password" autocomplete="new-password">
+        <button class="icon-right" id="toggle-reg-pw" type="button" aria-label="Toggle password">
+          <i class='bx bx-show'></i>
+        </button>
+      </div>
+
+      <div class="input-wrap">
+        <i class='bx bx-lock-alt icon-left'></i>
+        <input type="password" id="reg-password-confirm" class="form-input-dark" placeholder="Confirm password" autocomplete="new-password">
+      </div>
+
+      <button class="btn-login" id="register-submit-btn" style="background:linear-gradient(135deg,var(--gold),#A37F1A);box-shadow:0 6px 24px rgba(212,175,55,0.35);">
+        Create Account <i class='bx bx-right-arrow-alt'></i>
+      </button>
+
+      <p class="switch-text">
+        Already have an account? <a href="#" id="toggle-to-login">Sign in</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  function redirectToMain() {
+    const redirectPage = sessionStorage.getItem('login_redirect_page');
+    const redirectOfferId = sessionStorage.getItem('login_redirect_offer_id');
+    
+    if (redirectPage) {
+      sessionStorage.removeItem('login_redirect_page');
+      sessionStorage.removeItem('login_redirect_offer_id');
+      
+      let targetUrl = 'index.html?redirect=' + encodeURIComponent(redirectPage);
+      if (redirectOfferId) {
+        targetUrl += '&offer_id=' + encodeURIComponent(redirectOfferId);
+      }
+      window.location.href = targetUrl;
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
+
+  // Check if already logged in
+  if (API.isAuthenticated()) {
+    redirectToMain();
+    return;
+  }
+
+  // Toast notifications
+  const toastContainer = (() => {
+    const el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:10px;';
+    document.body.appendChild(el);
+    return el;
+  })();
+
+  function showToast(message, type = 'success') {
+    const colors = { success: '#10B981', error: '#E11D48', info: '#D4AF37' };
+    const toast = document.createElement('div');
+    toast.style.cssText = `
+      padding:12px 20px;border-radius:12px;
+      background:rgba(14,18,25,0.95);border:1px solid ${colors[type]}44;
+      color:#fff;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;
+      box-shadow:0 8px 30px rgba(0,0,0,0.4);
+      display:flex;align-items:center;gap:8px;
+      animation:toastIn 0.3s ease;
+    `;
+    toast.innerHTML = `<span style="color:${colors[type]};font-size:1rem;">●</span>${message}`;
+    toastContainer.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s';
+      setTimeout(() => toast.remove(), 350);
+    }, 3000);
+  }
+
+  // DOM elements
+  const loginForm = document.getElementById('login-form-section');
+  const registerForm = document.getElementById('register-form-section');
+  const loginEmail = document.getElementById('login-email');
+  const loginPassword = document.getElementById('login-password');
+  const loginBtn = document.getElementById('login-submit-btn');
+  const loginError = document.getElementById('login-error');
+  const togglePw = document.getElementById('toggle-pw');
+
+  const regUsername = document.getElementById('reg-username');
+  const regName = document.getElementById('reg-name');
+  const regEmail = document.getElementById('reg-email');
+  const regPassword = document.getElementById('reg-password');
+  const regPasswordConfirm = document.getElementById('reg-password-confirm');
+  const registerBtn = document.getElementById('register-submit-btn');
+  const registerError = document.getElementById('register-error');
+  const toggleRegPw = document.getElementById('toggle-reg-pw');
+
+  const toggleToRegLink = document.getElementById('toggle-to-register');
+  const toggleToLoginLink = document.getElementById('toggle-to-login');
+
+  // Forgot password DOM
+  const forgotForm = document.getElementById('forgot-form-section');
+  const forgotEmail = document.getElementById('forgot-email');
+  const forgotBtn = document.getElementById('forgot-submit-btn');
+  const forgotError = document.getElementById('forgot-error');
+  const forgotSuccess = document.getElementById('forgot-success');
+  const forgotPwLink = document.getElementById('forgot-pw-link');
+  const forgotBackLink = document.getElementById('forgot-back-to-login');
+
+  // Password visibility toggles
+  function setupPasswordToggle(inputEl, btnEl) {
+    if (!inputEl || !btnEl) return;
+    btnEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isPassword = inputEl.type === 'password';
+      inputEl.type = isPassword ? 'text' : 'password';
+      btnEl.querySelector('i').className = `bx ${isPassword ? 'bx-hide' : 'bx-show'}`;
+    });
+  }
+
+  setupPasswordToggle(loginPassword, togglePw);
+  setupPasswordToggle(regPassword, toggleRegPw);
+
+  // Helper: hide all forms
+  function hideAllForms() {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'none';
+    forgotForm.style.display = 'none';
+    if (loginError) loginError.classList.remove('show');
+    if (registerError) registerError.classList.remove('show');
+    if (forgotError) forgotError.classList.remove('show');
+    if (forgotSuccess) forgotSuccess.classList.remove('show');
+  }
+
+  // Form switching
+  toggleToRegLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideAllForms();
+    registerForm.style.display = 'block';
+  });
+
+  toggleToLoginLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideAllForms();
+    loginForm.style.display = 'block';
+  });
+
+  // Forgot password link
+  forgotPwLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideAllForms();
+    forgotForm.style.display = 'block';
+    forgotEmail.value = loginEmail.value;
+    forgotEmail.focus();
+  });
+
+  // Back to login from forgot
+  forgotBackLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    hideAllForms();
+    loginForm.style.display = 'block';
+  });
+
+  // Forgot password submit
+  forgotBtn.addEventListener('click', async () => {
+    const email = forgotEmail.value.trim();
+
+    if (!email) {
+      showError(forgotError, 'Please enter your email');
+      return;
+    }
+    if (!email.includes('@')) {
+      showError(forgotError, 'Please enter a valid email');
+      return;
+    }
+
+    forgotBtn.disabled = true;
+    forgotBtn.innerHTML = 'Sending... <i class="bx bx-loader-alt bx-spin"></i>';
+    if (forgotError) forgotError.classList.remove('show');
+    if (forgotSuccess) forgotSuccess.classList.remove('show');
+
+    try {
+      const response = await fetch('/again/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        forgotSuccess.textContent = result.message || 'If this email is registered, a reset link has been sent.';
+        forgotSuccess.classList.add('show');
+        forgotBtn.innerHTML = 'Link Sent <i class="bx bx-check"></i>';
+        forgotBtn.style.background = 'linear-gradient(135deg, #10B981, #28A870)';
+        showToast('Check your email for the reset link', 'success');
+      } else {
+        showError(forgotError, result.message || 'Something went wrong. Please try again.');
+        forgotBtn.disabled = false;
+        forgotBtn.innerHTML = 'Send Reset Link <i class="bx bx-right-arrow-alt"></i>';
+      }
+    } catch (error) {
+      showError(forgotError, 'Network error. Please try again.');
+      forgotBtn.disabled = false;
+      forgotBtn.innerHTML = 'Send Reset Link <i class="bx bx-right-arrow-alt"></i>';
+    }
+  });
+
+  // Enter key for forgot form
+  if (forgotEmail) {
+    forgotEmail.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') forgotBtn.click();
+    });
+  }
+
+  // Error display helper
+  function showError(element, message) {
+    if (!element) return;
+    element.textContent = message;
+    element.classList.add('show');
+    const card = document.querySelector('.login-card');
+    if (card) {
+      card.classList.add('shake');
+      setTimeout(() => card.classList.remove('shake'), 400);
+    }
+  }
+
+  // Login handler
+  loginBtn.addEventListener('click', async () => {
+    const email = loginEmail.value.trim();
+    const password = loginPassword.value;
+
+    // Validation
+    if (!email) {
+      showError(loginError, 'Please enter your email');
+      return;
+    }
+    if (!email.includes('@')) {
+      showError(loginError, 'Please enter a valid email');
+      return;
+    }
+    if (!password) {
+      showError(loginError, 'Please enter your password');
+      return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.classList.add('loading');
+    loginBtn.innerHTML = 'Signing in... <i class="bx bx-right-arrow-alt"></i>';
+    if (loginError) loginError.classList.remove('show');
+
+    try {
+      const response = await API.auth.login(email, password);
+
+      if (response.success) {
+        loginBtn.style.background = 'linear-gradient(135deg, #10B981, #28A870)';
+        loginBtn.innerHTML = 'Welcome! <i class="bx bx-right-arrow-alt"></i>';
+        showToast('Sign in successful! Redirecting...', 'success');
+        setTimeout(() => {
+          redirectToMain();
+        }, 1500);
+      } else {
+        // Handle both API errors and JSON parse errors
+        let errorMsg = response.message || 'Invalid email or password';
+        if (response.raw) {
+          console.error('Server returned:', response.raw);
+          errorMsg = 'Server error - check console logs';
+        }
+        showError(loginError, errorMsg);
+        loginBtn.disabled = false;
+        loginBtn.classList.remove('loading');
+        loginBtn.innerHTML = 'Sign In <i class="bx bx-right-arrow-alt"></i>';
+      }
+    } catch (error) {
+      showError(loginError, 'Network error. Please try again.');
+      loginBtn.disabled = false;
+      loginBtn.classList.remove('loading');
+      loginBtn.innerHTML = 'Sign In <i class="bx bx-right-arrow-alt"></i>';
+    }
+  });
+
+  // Register handler
+  registerBtn.addEventListener('click', async () => {
+    const username = regUsername.value.trim();
+    const fullName = regName.value.trim();
+    const email = regEmail.value.trim();
+    const password = regPassword.value;
+    const passwordConfirm = regPasswordConfirm.value;
+
+    // Validation
+    if (!username) {
+      showError(registerError, 'Please enter a username');
+      return;
+    }
+    if (!fullName) {
+      showError(registerError, 'Please enter your full name');
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      showError(registerError, 'Please enter a valid email');
+      return;
+    }
+    if (!password) {
+      showError(registerError, 'Please enter a password');
+      return;
+    }
+    if (password.length < 6) {
+      showError(registerError, 'Password must be at least 6 characters');
+      return;
+    }
+    if (password !== passwordConfirm) {
+      showError(registerError, 'Passwords do not match');
+      return;
+    }
+
+    registerBtn.disabled = true;
+    registerBtn.classList.add('loading');
+    registerBtn.innerHTML = 'Creating account... <i class="bx bx-right-arrow-alt"></i>';
+    if (registerError) registerError.classList.remove('show');
+
+    try {
+      const response = await API.auth.register({
+        username,
+        email,
+        password,
+        password_confirm: passwordConfirm,
+        full_name: fullName,
+      });
+
+      if (response.success) {
+        showToast('Account created! Redirecting to login...', 'success');
+        setTimeout(() => {
+          // Switch to login form
+          registerForm.style.display = 'none';
+          loginForm.style.display = 'block';
+          registerBtn.disabled = false;
+          registerBtn.classList.remove('loading');
+          registerBtn.innerHTML = 'Create Account <i class="bx bx-right-arrow-alt"></i>';
+          
+          // Pre-fill email
+          loginEmail.value = email;
+          loginEmail.focus();
+          
+          // Clear register form
+          regUsername.value = '';
+          regName.value = '';
+          regEmail.value = '';
+          regPassword.value = '';
+          regPasswordConfirm.value = '';
+        }, 1500);
+      } else {
+        showError(registerError, response.message || 'Registration failed. Please try again.');
+        registerBtn.disabled = false;
+        registerBtn.classList.remove('loading');
+        registerBtn.innerHTML = 'Create Account <i class="bx bx-right-arrow-alt"></i>';
+      }
+    } catch (error) {
+      showError(registerError, 'Network error. Please try again.');
+      registerBtn.disabled = false;
+      registerBtn.classList.remove('loading');
+      registerBtn.innerHTML = 'Create Account <i class="bx bx-right-arrow-alt"></i>';
+    }
+  });
+
+  // ── Google OAuth button ──────────────────────────────────────────────────
+  const googleBtn = document.getElementById('google-btn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', () => {
+      // Show loading state
+      googleBtn.disabled = true;
+      googleBtn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="animation:spin .8s linear infinite">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+          <path d="M12 2a10 10 0 0 1 10 10" stroke="#4285F4" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        Connecting...`;
+      // Redirect to backend Google OAuth initiation endpoint
+      window.location.href = '/again/api/auth/google';
+    });
+  }
+
+  // ── Handle Google callback token in URL ──────────────────────────────────
+  (function handleGoogleCallback() {
+    const params  = new URLSearchParams(window.location.search);
+    const token   = params.get('google_token');
+    const userRaw = params.get('google_user');
+    const errCode = params.get('google_error');
+
+    if (errCode) {
+      const msgs = {
+        invalid_state:        'Security check failed. Please try again.',
+        token_exchange_failed:'Could not connect to Google. Please try again.',
+        user_fetch_failed:    'Could not retrieve your Google profile.',
+        account_blocked:      'Your account has been suspended.',
+        invalid_email:        'Google account has no valid email.',
+      };
+      showError(loginError, msgs[errCode] || 'Google sign-in failed: ' + errCode);
+      // Clean up URL
+      history.replaceState({}, '', window.location.pathname);
+      return;
+    }
+
+    if (token && userRaw) {
+      try {
+        const user = JSON.parse(decodeURIComponent(userRaw));
+        // Store exactly like the normal login flow does
+        API.setToken(token);
+        API.setCurrentUser(user);
+        loginBtn.style.background = 'linear-gradient(135deg, #10B981, #28A870)';
+        loginBtn.innerHTML = 'Welcome! <i class="bx bx-right-arrow-alt"></i>';
+        showToast('Google sign-in successful! Redirecting...', 'success');
+        // Clean URL before redirect
+        history.replaceState({}, '', window.location.pathname);
+        setTimeout(() => { redirectToMain(); }, 1200);
+      } catch (e) {
+        showError(loginError, 'Invalid response from Google sign-in.');
+        history.replaceState({}, '', window.location.pathname);
+      }
+    }
+  })();
+
+  // ── Facebook OAuth button ─────────────────────────────────────────────────
+  const facebookBtn = document.getElementById('facebook-btn');
+  if (facebookBtn) {
+    facebookBtn.addEventListener('click', () => {
+      facebookBtn.disabled = true;
+      facebookBtn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="animation:spin .8s linear infinite">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+          <path d="M12 2a10 10 0 0 1 10 10" stroke="#1877F2" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        Connecting...`;
+      // Redirect to backend Facebook OAuth initiation endpoint
+      window.location.href = '/again/api/auth/facebook';
+    });
+  }
+
+  // ── Handle Facebook callback token in URL ────────────────────────────────
+  (function handleFacebookCallback() {
+    const params  = new URLSearchParams(window.location.search);
+    const token   = params.get('facebook_token');
+    const userRaw = params.get('facebook_user');
+    const errCode = params.get('facebook_error');
+
+    if (errCode) {
+      const msgs = {
+        invalid_state:        'Security check failed. Please try again.',
+        token_exchange_failed:'Could not connect to Facebook. Please try again.',
+        user_fetch_failed:    'Could not retrieve your Facebook profile.',
+        account_blocked:      'Your account has been suspended.',
+        access_denied:        'Facebook access was denied. Please try again.',
+        db_error:             'A server error occurred. Please try again.',
+      };
+      showError(loginError, msgs[errCode] || 'Facebook sign-in failed: ' + errCode);
+      // Clean up URL
+      history.replaceState({}, '', window.location.pathname);
+      return;
+    }
+
+    if (token && userRaw) {
+      try {
+        const user = JSON.parse(decodeURIComponent(userRaw));
+        // Store using the exact same API methods as Google and normal login
+        API.setToken(token);
+        API.setCurrentUser(user);
+        loginBtn.style.background = 'linear-gradient(135deg, #10B981, #28A870)';
+        loginBtn.innerHTML = 'Welcome! <i class="bx bx-right-arrow-alt"></i>';
+        showToast('Facebook sign-in successful! Redirecting...', 'success');
+        // Clean URL before redirect
+        history.replaceState({}, '', window.location.pathname);
+        setTimeout(() => { redirectToMain(); }, 1200);
+      } catch (e) {
+        showError(loginError, 'Invalid response from Facebook sign-in.');
+        history.replaceState({}, '', window.location.pathname);
+      }
+    }
+  })();
+
+  // Enter key support
+  [loginEmail, loginPassword].forEach(input => {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') loginBtn.click();
+    });
+  });
+
+  [regUsername, regName, regEmail, regPassword, regPasswordConfirm].forEach(input => {
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') registerBtn.click();
+    });
+  });
+
+})();
+</script>
+
+<style>
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes toastIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
+</style>
+</body>
+</html>

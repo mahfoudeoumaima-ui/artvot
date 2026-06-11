@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARTVOT | Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <script src="api-client.js?v=2.0"></script>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script>
+    (function() {
+      const saved = localStorage.getItem('artvot_theme');
+      if (saved === 'light') { document.documentElement.classList.add('light-mode'); }
+      else if (!saved && window.matchMedia('(prefers-color-scheme: light)').matches) { document.documentElement.classList.add('light-mode'); }
+    })();
+  </script>
+</head>
+<body>
+<script>
+(function(){
+  if (!API.isAuthenticated()) { window.location.href='admin-login.html'; return; }
+  const u = API.getCurrentUser();
+  if (!u || !u.roles || !u.roles.includes('admin')) { API.clearToken(); API.clearCurrentUser(); window.location.href='admin-login.html'; }
+})();
+</script>
+
+<!-- Sidebar -->
+<aside class="admin-sidebar">
+  <div class="admin-brand">
+    <span class="brand-text">ARTVOT</span>
+    <span class="admin-badge"><i class='bx bxs-shield-alt-2'></i> ADMIN</span>
+  </div>
+  <nav class="admin-nav">
+    <a class="admin-nav-item active" data-section="dashboard"><i class='bx bx-grid-alt'></i> Dashboard</a>
+    <a class="admin-nav-item" data-section="users"><i class='bx bx-group'></i> Users</a>
+    <a class="admin-nav-item" data-section="offers"><i class='bx bx-briefcase'></i> Offers</a>
+    <a class="admin-nav-item" data-section="submissions"><i class='bx bx-send'></i> Submissions</a>
+    <a class="admin-nav-item" data-section="reports"><i class='bx bx-flag'></i> Reports</a>
+    <a class="admin-nav-item" data-section="analytics"><i class='bx bx-line-chart'></i> Analytics</a>
+    <a class="admin-nav-item" data-section="platform"><i class='bx bx-shield-quarter'></i> Platform</a>
+  </nav>
+  <div class="admin-sidebar-footer">
+    <a href="index.html" class="admin-nav-item"><i class='bx bx-home'></i> User Site</a>
+    <a href="#" class="admin-nav-item" id="admin-logout"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="admin-main">
+  <header class="admin-topbar">
+    <h1 class="admin-page-title">Dashboard</h1>
+    <div class="admin-topbar-right">
+      <span class="admin-user-name" id="admin-display-name">Admin</span>
+      <div class="admin-avatar"><i class='bx bxs-shield-alt-2'></i></div>
+    </div>
+  </header>
+
+  <!-- Dashboard -->
+  <section class="admin-section active" id="section-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon blue"><i class='bx bx-group'></i></div><div class="stat-info"><span class="stat-value" id="stat-users">—</span><span class="stat-label">Total Users</span></div></div>
+      <div class="stat-card"><div class="stat-icon gold"><i class='bx bx-briefcase'></i></div><div class="stat-info"><span class="stat-value" id="stat-offers">—</span><span class="stat-label">Total Offers</span></div></div>
+      <div class="stat-card"><div class="stat-icon pink"><i class='bx bx-palette'></i></div><div class="stat-info"><span class="stat-value" id="stat-artworks">—</span><span class="stat-label">Total Submissions</span></div></div>
+      <div class="stat-card"><div class="stat-icon green"><i class='bx bx-trophy'></i></div><div class="stat-info"><span class="stat-value" id="stat-votes">—</span><span class="stat-label">Total Votes</span></div></div>
+    </div>
+    <div class="admin-panel-grid">
+      <div class="admin-card">
+        <h3><i class='bx bx-time-five'></i> Recent Activity</h3>
+        <div id="recent-activity" class="admin-list"><div class="loading-placeholder">Loading...</div></div>
+      </div>
+      <div class="admin-card">
+        <h3><i class='bx bx-zap'></i> Quick Actions</h3>
+        <div class="quick-actions">
+          <button class="qa-btn gold" onclick="showCreateOfferModal()"><i class='bx bx-plus'></i> Create Offer</button>
+          <button class="qa-btn blue" data-section="users"><i class='bx bx-group'></i> Manage Users</button>
+          <button class="qa-btn pink" data-section="reports"><i class='bx bx-flag'></i> View Reports</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Users -->
+  <section class="admin-section" id="section-users">
+    <div class="section-header">
+      <h2>User Management</h2>
+      <span class="admin-user-count" id="users-count-badge"></span>
+    </div>
+
+    <!-- Search + Filters -->
+    <div class="users-toolbar">
+      <div class="users-search-wrap">
+        <i class='bx bx-search'></i>
+        <input type="text" id="users-search" class="admin-input" placeholder="Search by name, username or email…">
+      </div>
+      <div class="user-filter-tabs">
+        <button class="filter-tab active" data-user-filter="all">All</button>
+        <button class="filter-tab" data-user-filter="active">Active</button>
+        <button class="filter-tab" data-user-filter="blocked">Blocked</button>
+        <button class="filter-tab" data-user-filter="admin">Admins</button>
+      </div>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="users-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Status</th>
+            <th>Joined</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="users-tbody">
+          <tr><td colspan="7" class="loading-placeholder">Loading users...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Offers -->
+  <section class="admin-section" id="section-offers">
+    <div class="section-header">
+      <h2>Offer Management</h2>
+      <button class="btn-admin-action gold" onclick="showCreateOfferModal()"><i class='bx bx-plus'></i> Create Offer</button>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="offers-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Budget</th>
+            <th>Deadline</th>
+            <th>Applicants</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="offers-tbody">
+          <tr><td colspan="7" class="loading-placeholder">Loading offers...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Reports -->
+  <section class="admin-section" id="section-reports">
+    <div class="section-header"><h2>Reports & Moderation</h2></div>
+    <div id="reports-list" class="admin-list"><div class="loading-placeholder">Loading reports...</div></div>
+  </section>
+
+  <!-- Submissions -->
+  <section class="admin-section" id="section-submissions">
+    <div class="section-header"><h2>Submission Management</h2></div>
+    <div id="submissions-list" class="admin-list"><div class="loading-placeholder">Loading submissions...</div></div>
+  </section>
+
+  <!-- Platform Settings -->
+  <section class="admin-section" id="section-platform">
+    <div class="section-header"><h2>Platform Controls</h2></div>
+    <div class="admin-card" style="max-width:640px;">
+      <h3><i class='bx bx-shield-quarter'></i> Global Toggles</h3>
+      <p style="font-size:0.84rem;color:var(--text-sec);margin-bottom:20px;line-height:1.6;">
+        These switches apply platform-wide. Disabling offer creation or submissions affects every user instantly — no individual exceptions.
+      </p>
+      <div id="platform-toggles" style="display:flex;flex-direction:column;gap:16px;">
+        <div class="loading-placeholder">Loading settings...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics -->
+  <section class="admin-section" id="section-analytics">
+    <div class="section-header"><h2>Platform Analytics</h2></div>
+    <div class="stats-grid" id="analytics-stats"></div>
+  </section>
+</main>
+
+<!-- Create Offer Modal -->
+<div class="admin-modal-overlay" id="create-offer-modal">
+  <div class="admin-modal">
+    <div class="admin-modal-header">
+      <h2><i class='bx bx-briefcase'></i> Create New Offer</h2>
+      <button class="modal-close" onclick="closeModal('create-offer-modal')">&times;</button>
+    </div>
+    <div class="form-group"><label>Title</label><input type="text" id="co-title" class="admin-input" placeholder="e.g. Logo Design Contest"></div>
+    <div class="form-group"><label>Description</label><textarea id="co-desc" class="admin-input" rows="3" placeholder="Describe the offer requirements..."></textarea></div>
+    <div class="form-row">
+      <div class="form-group"><label>Budget ($)</label><input type="number" id="co-budget" class="admin-input" placeholder="500" min="1"></div>
+      <div class="form-group"><label>Deadline</label><input type="date" id="co-deadline" class="admin-input"></div>
+    </div>
+    <button class="btn-admin-action gold full" id="co-submit-btn" onclick="submitCreateOffer()"><i class='bx bx-send'></i> Publish Offer</button>
+  </div>
+</div>
+
+<script src="admin-panel.js?v=3.0"></script>
+</body>
+</html>

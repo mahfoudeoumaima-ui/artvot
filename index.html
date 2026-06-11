@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ARTVOT — The Ultimate Design Arena. Compete, vote, and earn.">
+  <title>ARTVOT | Design Arena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4.0">
+  <script src="api-client.js?v=2.0"></script>
+  <script src="notifications.js?v=2.0"></script>
+  <script src="admin-dashboard.js?v=2.0"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    .mention-tag {
+      background: rgba(212, 175, 55, 0.12);
+      color: #D4AF37;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    .mention-tag:hover {
+      background: #D4AF37;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(212, 175, 55, 0.35);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body class="loading">
+ 
+<!-- ══════════════════════════════════════
+     SPLASH SCREEN
+══════════════════════════════════════ -->
+<div id="splash-screen">
+  <div class="splash-logo-container" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+    <h1 class="splash-logo" style="margin-bottom: 8px;">ARTVOT</h1>
+  </div>
+  <p class="splash-tagline">The Ultimate Design Arena</p>
+  <div class="splash-loader"><div class="splash-loader-bar"></div></div>
+</div>
+ 
+<!-- ══════════════════════════════════════
+     APP SHELL
+══════════════════════════════════════ -->
+<div id="app-content" style="opacity:0;display:none;">
+ 
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay"></div>
+ 
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">ARTVOT</div>
+ 
+    <span class="nav-section-label">Menu</span>
+ 
+    <a class="nav-item" data-page="page-home" href="#">
+      <i class='bx bx-home-alt-2'></i> Home
+    </a>
+    <a class="nav-item" data-page="page-offers" href="#">
+      <i class='bx bx-briefcase-alt-2'></i> Offers
+    </a>
+    <a class="nav-item" id="nav-offer-hub" data-page="page-offer-hub" href="#" style="display:none;">
+      <i class='bx bx-git-merge'></i> Offer Hub
+    </a>
+ 
+    <span class="nav-section-label">Account</span>
+ 
+    <a class="nav-item" id="nav-designer-artworks" data-page="page-designer-artworks" href="#" style="display:none;">
+      <i class='bx bx-palette'></i> Artwork
+    </a>
+    <a class="nav-item" data-page="page-settings" href="#">
+      <i class='bx bx-cog'></i> Settings
+    </a>
+ 
+    <span class="nav-section-label" id="nav-business-label" style="display:none;">Business</span>
+ 
+    <a class="nav-item" id="nav-admin-dashboard" data-page="page-admin-dashboard" href="#" style="display:none;">
+      <i class='bx bxs-shield-alt-2'></i> Admin Panel
+    </a>
+ 
+    <div class="sidebar-spacer"></div>
+ 
+    <!-- Wallet -->
+    <div class="sidebar-wallet">
+      <div class="wallet-info">
+        <div class="label">Wallet</div>
+        <div class="amount wallet-amount">$0.00</div>
+      </div>
+      <i class='bx bx-wallet wallet-icon'></i>
+    </div>
+ 
+    <!-- Logout -->
+    <button class="theme-toggle-btn" id="logout-btn" style="color:var(--pink);border-color:rgba(225,29,72,0.2);">
+      <i class='bx bx-log-out'></i>
+      <span>Logout</span>
+    </button>
+
+    <!-- Login/Register button for guests -->
+    <button class="theme-toggle-btn" id="sidebar-login-btn" style="color:var(--gold);border-color:rgba(212,175,55,0.2);display:none;">
+      <i class='bx bx-log-in'></i>
+      <span>Login / Register</span>
+    </button>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle-btn">
+      <i class='bx bx-sun theme-icon'></i>
+      <span class="toggle-label">Light Mode</span>
+    </button>
+  </aside>
+ 
+  <!-- ── Main content ── -->
+  <div class="main-content">
+ 
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="mobile-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <span class="topbar-title">Trending Creates</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-gold btn-sm" id="about-us-btn">
+          <i class='bx bx-info-circle'></i> Who We Are
+        </button>
+        <div id="notification-bell-container" style="position: relative;"></div>
+        <div id="notification-dropdown-container" style="position: relative;"></div>
+        <div class="topbar-avatar" data-page="page-profile" style="cursor:pointer;"></div>
+      </div>
+    </header>
+ 
+    <main>
+ 
+     
+        <!-- ══════════════════════════════════════
+           1. HOME — Feed
+      ══════════════════════════════════════ -->
+        <section id="page-home" class="page-section active">
+          <div class="section-inner">
+ 
+
+            <div class="section-header reveal">
+              <div>
+                <h2>Trending <span class="green">Creates</span></h2>
+                <p style="color:var(--text-secondary);font-size:0.85rem;margin-top:4px;">Vote on the best designs and
+                  earn rewards</p>
+              </div>
+              <div class="filters">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Logos</button>
+                <button class="filter-btn">Web</button>
+                <button class="filter-btn">3D</button>
+                <button class="filter-btn">Motion</button>
+              </div>
+            </div>
+ 
+            <!-- Status & Search Filters -->
+            <div class="feed-status-filters" style="display:flex;gap:12px;margin:20px 0;flex-wrap:wrap;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:16px;">
+              <div style="display:none;gap:8px;">
+                <button class="btn btn-ghost btn-sm active" id="feed-filter-active" data-status="active" style="border:1px solid rgba(255,255,255,0.1);padding:6px 16px;border-radius:20px;font-size:0.85rem;">Active</button>
+                <button class="btn btn-ghost btn-sm" id="feed-filter-expired" data-status="expired" style="border:1px solid rgba(255,255,255,0.1);padding:6px 16px;border-radius:20px;font-size:0.85rem;">Closed/Expired</button>
+              </div>
+              <div class="search-box" style="position:relative;width:260px;">
+                <i class='bx bx-search' style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1.1rem;"></i>
+                <input type="text" id="feed-search-input" placeholder="Search offers..." class="form-input" style="padding-left:36px;font-size:0.85rem;height:36px;border-radius:18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);width:100%;color:var(--text-primary);">
+              </div>
+            </div>
+ 
+            <!-- Feed Filters -->
+            <div class="feed-filters">
+              <button class="feed-filter-btn active" data-filter="trending">Trending</button>
+              <button class="feed-filter-btn" data-filter="newest">Newest</button>
+              <button class="feed-filter-btn" data-filter="popular">Most Voted</button>
+            </div>
+ 
+            <div id="artwork-feed" class="grid">
+              <!-- Dynamic artwork cards loaded by feed.js -->
+            </div>
+ 
+            <!-- Old static content kept for reference -->
+            <!-- Static cards removed — feed is now 100% dynamic via feed.js -->
+ 
+          </div><!-- /section-inner -->
+        </section>
+ 
+        <!-- ══════════════════════════════════════
+             1.5. ABOUT US — Fully Isolated Page View
+        ══════════════════════════════════════ -->
+        <section id="about-us-section" class="page-section about-us-section">
+          <div class="section-inner">
+            <button class="btn btn-outline btn-sm back-to-home-btn" onclick="window.activatePage('page-home')" style="margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px;">
+              <i class='bx bx-arrow-back'></i> Back to Home
+            </button>
+            <div class="about-hero">
+              <div class="about-tag">About ARTVOT</div>
+              <h1 class="about-main-title">Discover Creative Talent Through Real Community Interaction</h1>
+              <p class="about-main-desc">
+                ARTVOT is a creative platform where designers, artists, and visual creators share their work with an active community. Every creation has the chance to be discovered, appreciated, and supported through real engagement and public voting.
+              </p>
+            </div>
+            
+            <div class="about-grid">
+              <!-- Card 1 -->
+              <div class="about-card glass">
+                <div class="about-card-icon"><i class='bx bx-palette'></i></div>
+                <h3 class="about-card-title">A Better Experience for Creators</h3>
+                <p class="about-card-text">
+                  Creators can publish artworks, participate in creative offers, grow their audience, and build a professional identity through their portfolio and activity.
+                </p>
+              </div>
+              
+              <!-- Card 2 -->
+              <div class="about-card glass">
+                <div class="about-card-icon"><i class='bx bx-check-shield'></i></div>
+                <h3 class="about-card-title">Interactive Voting System</h3>
+                <p class="about-card-text">
+                  Users help highlight the best creations on the platform. Popular artworks gain more visibility and stronger engagement inside the community.
+                </p>
+              </div>
+              
+              <!-- Card 3 -->
+              <div class="about-card glass">
+                <div class="about-card-icon"><i class='bx bx-briefcase'></i></div>
+                <h3 class="about-card-title">Creative Offers for Clients</h3>
+                <p class="about-card-text">
+                  Clients can launch offers and discover talented creators through portfolios, submissions, and community interaction.
+                </p>
+              </div>
+              
+              <!-- Card 4 -->
+              <div class="about-card glass">
+                <div class="about-card-icon"><i class='bx bx-network-chart'></i></div>
+                <h3 class="about-card-title">Modern, Fast & Community Focused</h3>
+                <p class="about-card-text">
+                  ARTVOT combines portfolios, artwork feeds, notifications, profiles, and engagement tools into one modern creative ecosystem.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      <!-- ══════════════════════════════════════
+           2. OFFERS
+      ══════════════════════════════════════ -->
+      <section id="page-offers" class="page-section">
+        <div class="section-inner">
+          <div class="section-header reveal">
+            <div>
+              <h2>Active <span class="gold">Offers</span></h2>
+              <p style="color:var(--text-secondary);font-size:0.85rem;margin-top:4px;">Find and publish creative offers</p>
+            </div>
+            <button class="btn btn-primary" data-modal="upload-modal">
+              <i class='bx bx-plus'></i> Create Offer
+            </button>
+          </div>
+ 
+          <div class="grid" id="offer-feed">
+            <!-- Dynamic offer cards loaded by feed.js / main.js -->
+          </div>
+ 
+        </div>
+      </section>
+ 
+
+      <!-- ══════════════════════════════════════
+           5. PROFILE
+      ══════════════════════════════════════ -->
+      <section id="page-profile" class="page-section">
+        <div class="section-inner">
+          <!-- Profile Hero — dynamic -->
+          <div class="profile-hero reveal" style="text-align:center;">
+            <div id="profile-cover" style="height:160px;border-radius:16px 16px 0 0;background:linear-gradient(135deg,#08080A 0%,#0F0F13 40%,var(--gold) 100%);margin:-20px -20px 0;position:relative;">
+              <button id="edit-cover-btn" class="btn btn-ghost" style="position:absolute;bottom:12px;right:12px;font-size:0.75rem;padding:4px 10px;"><i class='bx bx-camera'></i></button>
+            </div>
+            <div style="margin-top:-48px;position:relative;z-index:2;">
+              <div id="profile-avatar-display" class="profile-avatar-lg" style="margin:0 auto;border:3px solid var(--gold);"></div>
+            </div>
+            <h1 id="profile-display-name" style="margin:12px 0 4px;">@username</h1>
+            <p id="profile-bio" style="color:var(--text-secondary);max-width:500px;margin:0 auto 16px;font-size:0.88rem;">Loading profile...</p>
+            <div id="profile-social-links" style="display:flex;gap:8px;justify-content:center;margin-bottom:16px;"></div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+              <button id="edit-profile-btn" class="btn btn-primary" onclick="openEditProfile()"><i class='bx bx-edit'></i> Edit Profile</button>
+              <button class="btn btn-ghost"><i class='bx bx-wallet'></i> Withdraw</button>
+            </div>
+
+            <div class="stats-row" style="margin-top:20px;">
+              <div class="stat-box">
+                <div class="stat-num text-gold" id="stat-earnings">$0</div>
+                <div class="stat-label">Earned</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num text-green" id="stat-avg-score">0.0</div>
+                <div class="stat-label">Avg Score</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num text-pink" id="stat-offers">0</div>
+                <div class="stat-label">Offers</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-num" id="stat-contributions">0</div>
+                <div class="stat-label">Contributions</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ PROFILE TABS ══ -->
+          <div class="profile-tabs-wrap reveal delay-1" style="margin-top:40px;">
+            <div class="profile-tab-nav">
+              <button class="profile-tab-btn active" data-tab="tab-portfolio">
+                🎨 Portfolio
+              </button>
+              <button class="profile-tab-btn" data-tab="tab-my-offers">
+                📋 My Offers
+              </button>
+              <button class="profile-tab-btn" data-tab="tab-earnings">
+                💰 Earnings
+              </button>
+            </div>
+
+            <!-- Tab: Portfolio — real artworks -->
+            <div class="profile-tab-panel active" id="tab-portfolio">
+              <div class="profile-art-grid" id="portfolio-grid">
+                <div style="text-align:center;padding:40px;color:var(--text-secondary);grid-column:1/-1;">
+                  <i class='bx bx-loader-alt bx-spin' style="font-size:2rem;"></i>
+                  <p style="margin-top:8px;">Loading portfolio...</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab: My Offers -->
+            <div class="profile-tab-panel" id="tab-my-offers">
+              <div id="my-offers-list" class="grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px; margin-top:10px;">
+                <div style="text-align:center;padding:40px;color:var(--text-secondary);grid-column:1/-1;">
+                  <i class='bx bx-loader-alt bx-spin' style="font-size:2.5rem;color:var(--gold);"></i>
+                  <p style="margin-top:12px;">Loading your offers...</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab: Earnings -->
+            <div class="profile-tab-panel" id="tab-earnings">
+              <div id="earnings-list" style="display:grid;gap:12px;">
+                <div style="text-align:center;padding:40px;color:var(--text-secondary);">
+                  <i class='bx bx-briefcase' style="font-size:2rem;opacity:0.3;"></i>
+                  <p style="margin-top:8px;">Complete projects to start earning</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /profile-tabs-wrap -->
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           4.5. DESIGNER ARTWORKS PAGE
+       ══════════════════════════════════════ -->
+      <section id="page-designer-artworks" class="page-section">
+        <div class="section-inner" style="max-width: 1200px;">
+          
+          <!-- Premium Hero / Header Section -->
+          <div class="artwork-hero glass reveal" style="padding: 32px; border-radius: 24px; margin-bottom: 32px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-md), var(--shadow-gold);">
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: center; justify-content: space-between;">
+              
+              <!-- Designer Profile Preview -->
+              <div style="display: flex; align-items: center; gap: 24px; flex: 1; min-width: 280px;">
+                <div id="artwork-profile-avatar" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); background-size: cover; background-position: center; flex-shrink: 0;"></div>
+                <div>
+                  <h2 id="artwork-profile-name" style="font-size: 1.6rem; font-weight: 800; margin: 0 0 4px; color: var(--text);">Loading...</h2>
+                  <p id="artwork-profile-username" style="font-size: 0.9rem; color: var(--gold); font-weight: 600; margin: 0 0 8px;">@username</p>
+                  <p id="artwork-profile-bio" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; max-width: 500px; margin: 0;">Loading bio...</p>
+                </div>
+              </div>
+              
+              <!-- Stats Row -->
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end;">
+                <div class="artwork-stat-card" style="text-align: center; padding: 16px; background: var(--surface-2); border-radius: 16px; border: 1px solid var(--border); min-width: 110px; box-shadow: var(--shadow-sm);">
+                  <span style="font-size: 0.72rem; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Artworks</span>
+                  <strong style="font-size: 1.8rem; color: var(--gold); font-family: 'Syne', sans-serif; font-weight: 800;" id="art-stat-uploads">0</strong>
+                </div>
+                <div class="artwork-stat-card" style="text-align: center; padding: 16px; background: var(--surface-2); border-radius: 16px; border: 1px solid var(--border); min-width: 110px; box-shadow: var(--shadow-sm);">
+                  <span style="font-size: 0.72rem; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Total Votes</span>
+                  <strong style="font-size: 1.8rem; color: var(--pink); font-family: 'Syne', sans-serif; font-weight: 800;" id="art-stat-votes">0</strong>
+                </div>
+                <div class="artwork-stat-card" style="text-align: center; padding: 16px; background: var(--surface-2); border-radius: 16px; border: 1px solid var(--border); min-width: 110px; box-shadow: var(--shadow-sm);">
+                  <span style="font-size: 0.72rem; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Avg Rating</span>
+                  <strong style="font-size: 1.8rem; color: var(--green); font-family: 'Syne', sans-serif; font-weight: 800;" id="art-stat-avg">0.0</strong>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Artwork Grid -->
+          <div id="designer-artworks-grid" class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px;">
+            <!-- Dynamic designer artwork cards loaded by loadDesignerArtworks() -->
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           6. SETTINGS
+      ══════════════════════════════════════ -->
+      <section id="page-settings" class="page-section">
+        <div class="section-inner" style="max-width: 960px;">
+          <div class="section-header reveal">
+            <div>
+              <h2>Account <span class="gold">Settings</span></h2>
+              <p style="color:var(--text-secondary);font-size:0.85rem;margin-top:4px;">Manage your profile and preferences</p>
+            </div>
+            <div id="settings-status" class="settings-status" aria-live="polite" style="display:none;"></div>
+          </div>
+
+          <div class="profile-tabs-wrap reveal delay-1" style="margin-top:24px;">
+            <div class="profile-tab-nav" style="border-bottom: 1px solid var(--border); margin-bottom: 24px; display: flex; gap: 8px;">
+              <button class="profile-tab-btn active" data-settings-tab="settings-tab-profile">
+                👤 Profile Settings
+              </button>
+              <button class="profile-tab-btn" data-settings-tab="settings-tab-preferences">
+                ⚙️ Preferences
+              </button>
+            </div>
+
+            <!-- Tab: Profile Settings -->
+            <div class="profile-tab-panel active" id="settings-tab-profile" style="display: block;">
+              <form id="settings-profile-form" style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- Avatar Upload Row -->
+                <div class="form-group" style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 16px; border: 1px solid var(--border);">
+                  <div id="settings-avatar-preview" style="width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--gold); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 15px rgba(212,175,55,0.2);">
+                    <i class='bx bx-user' id="settings-avatar-icon" style="font-size: 2.5rem; color: var(--gold);"></i>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label class="btn btn-outline btn-sm" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--gold); color: var(--gold); border-radius: 20px; padding: 6px 16px; font-size: 0.82rem; background: transparent; width: fit-content;">
+                      <i class='bx bx-camera'></i> Upload New Avatar
+                      <input type="file" id="settings-profile-avatar-input" accept="image/*" style="display: none;">
+                    </label>
+                    <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">JPG, PNG, GIF, WEBP up to 10MB</p>
+                  </div>
+                </div>
+
+                <!-- Full Name -->
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" id="settings-full-name" class="form-input" placeholder="Your Full Name">
+                </div>
+
+                <!-- Username & Email Row -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="settings-username" class="form-input" placeholder="username" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="settings-email" class="form-input" placeholder="email@example.com" required>
+                  </div>
+                </div>
+
+                <!-- Bio -->
+                <div class="form-group">
+                  <label class="form-label">Bio</label>
+                  <textarea id="settings-bio" class="form-input" rows="3" placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <!-- Wallet Address & Payout Method Row -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label class="form-label">Payout Method</label>
+                    <select id="settings-payout-method" class="form-input" aria-label="Payout method">
+                      <option value="crypto">Crypto Wallet</option>
+                      <option value="paypal">PayPal</option>
+                      <option value="stripe">Bank Transfer / Stripe</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Wallet Address</label>
+                    <input type="text" id="settings-wallet-address" class="form-input" placeholder="0x... or PayPal Email">
+                  </div>
+                </div>
+
+                <!-- Password Change (Optional) -->
+                <div class="form-group" style="background: rgba(225,29,72,0.02); padding: 20px; border-radius: 16px; border: 1px solid rgba(225,29,72,0.1); margin-top: 8px;">
+                  <h3 style="font-size: 0.9rem; font-weight: 700; color: var(--pink); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                    <i class='bx bx-key'></i> Change Password
+                  </h3>
+                  <div class="settings-password-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+                    <input type="password" id="settings-current-password" class="form-input" autocomplete="current-password" placeholder="Current password">
+                    <input type="password" id="settings-password" class="form-input" autocomplete="new-password" placeholder="New password">
+                    <input type="password" id="settings-password-confirm" class="form-input" autocomplete="new-password" placeholder="Confirm password">
+                  </div>
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;">
+                    <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">Must be at least 6 characters</p>
+                    <button type="button" id="save-password-btn" class="btn btn-ghost btn-sm">
+                      <i class='bx bx-lock-alt'></i> Update Password
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="save-settings-btn" class="btn btn-primary btn-lg" style="margin-top: 10px; align-self: flex-end;">
+                  <i class='bx bx-save'></i> Save Profile
+                </button>
+              </form>
+            </div>
+
+            <!-- Tab: Preferences -->
+            <div class="profile-tab-panel" id="settings-tab-preferences" style="display: none;">
+              <form id="settings-preferences-form" style="display: flex; flex-direction: column; gap: 20px; background: rgba(255,255,255,0.02); padding: 24px; border-radius: 16px; border: 1px solid var(--border);">
+                <h3 style="font-size: 1rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                  <i class='bx bx-slider-alt' style="color:var(--gold);"></i> Interface Preferences
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div class="form-group">
+                    <label class="form-label">Theme Mode</label>
+                    <select id="theme-select" class="form-input" aria-label="Theme Mode">
+                      <option value="dark">Dark Mode</option>
+                      <option value="light">Light Mode</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Default Language</label>
+                    <select id="language-select" class="form-input" aria-label="Language">
+                      <option value="en">English</option>
+                      <option value="fr">Français</option>
+                      <option value="ar">العربية</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 8px;">
+                  <label class="form-label" style="margin-bottom: 12px;">UI Customization</label>
+                  <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; color: var(--text-secondary);">
+                      <input type="checkbox" id="pref-compact-mode" style="accent-color: var(--gold); width: 16px; height: 16px;">
+                      Compact View Mode (reduce card margins)
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.88rem; color: var(--text-secondary);">
+                      <input type="checkbox" id="pref-enable-animations" style="accent-color: var(--gold); width: 16px; height: 16px;" checked>
+                      Enable interface micro-animations & transitions
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" id="save-preferences-btn" class="btn btn-primary btn-lg" style="margin-top: 10px; align-self: flex-end;">
+                  <i class='bx bx-save'></i> Save Preferences
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+ 
+
+ 
+      <!-- ══════════════════════════════════════
+           8. NOTIFICATIONS (REAL-TIME)
+      ══════════════════════════════════════ -->
+ 
+      <!-- ══════════════════════════════════════
+           9. PORTFOLIO (CREATOR PROFILES)
+      ══════════════════════════════════════ -->
+      <section id="page-portfolio" class="page-section">
+        <div class="portfolio-page-container">
+          <div id="portfolio-container">
+            <!-- Portfolio loaded by portfolio.js -->
+          </div>
+        </div>
+      </section>
+ 
+
+ 
+      <!-- ══════════════════════════════════════
+           11. ADMIN DASHBOARD
+      ══════════════════════════════════════ -->
+      <section id="page-admin-dashboard" class="page-section">
+        <div id="admin-dashboard-container">
+          <!-- Admin dashboard loaded by admin-dashboard.js -->
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           OFFER HUB PAGE (Separate SPA Section)
+      ══════════════════════════════════════ -->
+      <section id="page-offer-hub" class="page-section">
+        <div class="section-inner">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h2>🔥 Offer <span class="pink">Hub</span></h2>
+              <p style="color:var(--text-secondary);font-size:0.85rem;margin-top:4px;">Manage your campaigns and review submissions</p>
+            </div>
+            <button class="btn btn-primary" data-modal="upload-modal">
+              <i class='bx bx-plus'></i> New Offer
+            </button>
+          </div>
+          <div id="offer-hub-page-feed" class="grid">
+            <div style="text-align:center;padding:60px;color:var(--text-secondary);grid-column:1/-1;">
+              <i class='bx bx-loader-alt bx-spin' style="font-size:2.5rem;color:var(--gold);"></i>
+              <p style="margin-top:12px;">Loading your campaigns...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════
+           OFFER DETAIL PAGE (SPA Section)
+      ══════════════════════════════════════ -->
+      <section id="page-offer-detail" class="page-section">
+        <div class="section-inner">
+          <button class="btn btn-outline btn-sm" id="offer-page-back-btn" onclick="window._offerPageFromHub ? (window.activatePage ? window.activatePage('page-offer-hub') : null) : (window.activatePage ? window.activatePage('page-offers') : null)" style="margin-bottom:20px; display:inline-flex; align-items:center; gap:6px;" aria-label="Back">
+            <i class='bx bx-arrow-back'></i> Back
+          </button>
+          <div id="offer-page-container">
+            <!-- Dynamically rendered by loadOfferPage() -->
+            <div class="offer-page-skeleton">
+              <div class="skeleton-block" style="height:300px;border-radius:16px;margin-bottom:24px;"></div>
+              <div class="skeleton-block" style="height:24px;width:60%;border-radius:8px;margin-bottom:12px;"></div>
+              <div class="skeleton-block" style="height:16px;width:40%;border-radius:8px;margin-bottom:32px;"></div>
+              <div class="skeleton-block" style="height:200px;border-radius:16px;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+    </main><!-- /main -->
+  </div><!-- /main-content -->
+ 
+</div><!-- /app-content -->
+ 
+<!-- ══════════════════════════════════════
+     MODALS
+══════════════════════════════════════ -->
+ 
+<!-- Submit Offer Modal — Improved with Image Upload Preview -->
+<div id="upload-modal" class="modal-overlay">
+  <div class="modal-content glass" style="max-width:580px; width:95%;">
+    <div class="modal-header">
+      <h2>Create <span class="gold">Offer</span></h2>
+      <button class="btn-icon close-modal-btn"><i class='bx bx-x'></i></button>
+    </div>
+    
+    <form id="create-offer-form" style="display:flex; flex-direction:column; gap:20px;">
+      
+      <!-- Media Upload Area with Previews -->
+      <div class="form-group">
+        <label class="form-label">Media Files <span style="color:var(--text-secondary); font-weight:400;">(Images up to 10MB, Videos up to 20MB)</span></label>
+        <div class="upload-area" id="image-upload-area" style="cursor:pointer; transition:all 0.3s ease; position:relative; min-height:120px; padding:20px; display:flex; flex-direction:column; gap:16px;">
+          <div id="upload-placeholder" style="pointer-events:none; width:100%; text-align:center;">
+            <i class='bx bx-cloud-upload' style="font-size:2rem; margin-bottom:6px; display:block; color:var(--text-muted);"></i>
+            <span style="color:var(--text); font-size:0.9rem; font-weight:600;">Drag & drop files or <span class="pink">browse</span></span>
+            <span style="color:var(--text-secondary); font-size:0.75rem; display:block; margin-top:4px;">Supports Images & Videos</span>
+          </div>
+          <input type="file" id="offer-image-file" accept="image/*,video/*" multiple style="position:absolute; inset:0; opacity:0; cursor:pointer; z-index:2;">
+        </div>
+        <!-- Grid for selected file previews -->
+        <div id="offer-media-previews-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(80px, 1fr)); gap:12px; margin-top:12px;"></div>
+      </div>
+
+      <!-- Title -->
+      <div class="form-group">
+        <label class="form-label">Title <span style="color:var(--pink);">*</span></label>
+        <input type="text" id="post-title" class="form-input" placeholder="e.g. Need a modern logo design" required>
+        <div class="validation-error" id="title-error" style="color:var(--pink); font-size:0.8rem; margin-top:4px; display:none;"></div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label class="form-label" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+          <span>Description <span style="color:var(--pink);">*</span></span>
+          <span id="ws-ai-badge" class="badge" style="display:none; background:rgba(212,175,55,0.15); color:#D4AF37; font-size:0.7rem; font-weight:700; padding:2px 8px; border-radius:12px; border:1px solid rgba(212,175,55,0.3); align-items:center; gap:4px; text-transform:uppercase; letter-spacing:0.03em;">
+            ✨ AI Generated
+          </span>
+        </label>
+        <textarea id="post-desc" class="form-input" rows="3" placeholder="Describe your project requirements, style, and any specifics..." required></textarea>
+        <div class="validation-error" id="desc-error" style="color:var(--pink); font-size:0.8rem; margin-top:4px; display:none;"></div>
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label class="form-label">Category <span style="color:var(--pink);">*</span></label>
+        <select id="offer-category" class="form-input" required aria-label="Offer category">
+          <option value="" disabled selected>Select a category…</option>
+          <option value="Logo Design">Logo Design</option>
+          <option value="UI/UX">UI/UX</option>
+          <option value="Illustration">Illustration</option>
+          <option value="Branding">Branding</option>
+          <option value="Motion">Motion</option>
+          <option value="Poster">Poster</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="validation-error" id="category-error" style="color:var(--pink); font-size:0.8rem; margin-top:4px; display:none;"></div>
+      </div>
+
+      <!-- Budget -->
+      <div class="form-group">
+        <label class="form-label">Budget ($) <span style="color:var(--pink);">*</span></label>
+        <input type="number" id="offer-budget" class="form-input" placeholder="e.g. 500" step="0.01" min="1" required>
+        <div class="validation-error" id="budget-error" style="color:var(--pink); font-size:0.8rem; margin-top:4px; display:none;"></div>
+      </div>
+
+      <!-- Deadline -->
+      <div class="form-group">
+        <label class="form-label">Deadline <span style="color:var(--pink);">*</span></label>
+        <input type="date" id="offer-deadline" class="form-input" required>
+        <div class="validation-error" id="deadline-error" style="color:var(--pink); font-size:0.8rem; margin-top:4px; display:none;"></div>
+      </div>
+
+      <!-- Buttons -->
+      <div style="display:flex; gap:12px; margin-top:20px; justify-content:flex-end;">
+        <button type="button" id="cancel-upload-btn" class="btn btn-ghost btn-lg">
+          Cancel
+        </button>
+        <button type="submit" id="submit-post-btn" class="btn btn-primary btn-lg">
+          <i class='bx bx-rocket'></i> Launch Offer 🚀
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- Edit Offer Modal -->
+<div id="edit-offer-modal" class="modal-overlay">
+  <div class="modal-content glass">
+    <div class="modal-header">
+      <h2>Edit <span class="pink">Offer</span></h2>
+      <button class="btn-icon close-modal-btn" onclick="document.getElementById('edit-offer-modal').classList.remove('active')"><i class='bx bx-x'></i></button>
+    </div>
+    <input type="hidden" id="edit-offer-id">
+    <div class="form-group">
+      <label class="form-label">Title</label>
+      <input type="text" id="edit-offer-title" class="form-input" placeholder="e.g. Need a modern logo">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea id="edit-offer-desc" class="form-input" rows="3" placeholder="Describe what you need..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Budget ($)</label>
+      <input type="number" id="edit-offer-budget" class="form-input" placeholder="e.g. 500">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Deadline</label>
+      <input type="date" id="edit-offer-deadline" class="form-input">
+    </div>
+    <button id="save-offer-btn" class="btn btn-primary btn-full btn-lg">
+      <i class='bx bx-save'></i> Save Changes
+    </button>
+  </div>
+</div>
+
+<!-- Design Submission Workspace Modal -->
+<div id="submission-workspace-modal" class="modal-overlay">
+  <div class="modal-content glass" style="max-width:680px; width:90%;">
+    <div class="modal-header">
+      <h2><i class='bx bx-palette' style="color:var(--gold);"></i> Submit Design</h2>
+      <button class="btn-icon close-modal-btn" onclick="closeSubmissionWorkspace()"><i class='bx bx-x'></i></button>
+    </div>
+    <!-- Project Info Banner -->
+    <div id="ws-project-info" style="background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(225,29,72,0.06));border:1px solid rgba(212,175,55,0.15);border-radius:12px;padding:16px;margin-bottom:18px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <i class='bx bx-briefcase' style="color:var(--gold);font-size:1.1rem;"></i>
+        <span style="font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;">Submitting for</span>
+      </div>
+      <h3 id="ws-offer-title" style="font-size:1rem;font-weight:700;margin-bottom:4px;">—</h3>
+      <div style="display:flex;gap:16px;font-size:0.8rem;color:var(--text-secondary);">
+        <span><i class='bx bx-user'></i> Client: <strong id="ws-client-name" style="color:var(--text);">—</strong></span>
+        <span><i class='bx bx-dollar'></i> Budget: <strong id="ws-budget" class="text-gold">—</strong></span>
+      </div>
+    </div>
+    <input type="hidden" id="ws-offer-id" value="">
+    <input type="hidden" id="ws-submission-id" value="">
+    <input type="hidden" id="ws-client-name-val" value="">
+    <input type="hidden" id="ws-offer-title-val" value="">
+    <div class="form-group">
+      <label class="form-label">Design Title *</label>
+      <input type="text" id="ws-design-title" class="form-input" placeholder="e.g. Modern Minimal Logo v1">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Description</label>
+      <textarea id="ws-design-desc" class="form-input" rows="3" placeholder="Explain your creative approach…"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Upload Design Files * <span style="color:var(--text-secondary); font-weight:400;">(Images up to 10MB, Videos up to 20MB)</span></label>
+      <div id="ws-upload-area" style="border:2px dashed rgba(212,175,55,0.3); border-radius:12px; padding:20px; text-align:center; cursor:pointer; transition:all 0.2s; position:relative; min-height:120px; display:flex; flex-direction:column; gap:16px;">
+        <div id="ws-upload-placeholder" style="pointer-events:none; width:100%;">
+          <i class='bx bx-cloud-upload' style="font-size:2.5rem; color:var(--gold); opacity:0.6; margin-bottom:6px; display:block;"></i>
+          <span style="font-size:0.85rem; color:var(--text-secondary); font-weight:600;">Click or drag to upload design files</span>
+          <span style="font-size:0.72rem; color:var(--text-secondary); opacity:0.6; display:block; margin-top:4px;">Images & Videos</span>
+        </div>
+        <input type="file" id="ws-file-input" accept="image/*,video/*" multiple style="position:absolute; inset:0; opacity:0; cursor:pointer; z-index:2;">
+      </div>
+      <!-- Grid for design previews -->
+      <div id="ws-media-previews-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(80px, 1fr)); gap:12px; margin-top:12px;"></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tags (optional)</label>
+      <input type="text" id="ws-tags" class="form-input" placeholder="logo, branding, modern">
+    </div>
+    <button id="ws-submit-btn" class="btn btn-gold btn-full btn-lg" onclick="submitDesignWork()">
+      <i class='bx bx-send'></i> Submit Design
+    </button>
+  </div>
+</div>
+
+<!-- Offer Detail & Submissions Modal -->
+<div id="offer-detail-modal" class="modal-overlay">
+  <div class="modal-content glass" style="max-width:960px; width:95%; max-height:90vh; overflow-y:auto; padding:24px; border:1px solid rgba(212,175,55,0.25);">
+    <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:15px; margin-bottom:20px;">
+      <h2 id="od-title" style="font-weight:700; margin:0;"><i class='bx bx-party' style="color:var(--gold);"></i> Campaign Details</h2>
+      <button class="btn-icon close-modal-btn" onclick="closeOfferDetailModal()"><i class='bx bx-x'></i></button>
+    </div>
+    
+    <div style="display:grid; grid-template-columns: 1fr; gap: 24px;">
+      <!-- Campaign Information Block -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); border-radius:16px; padding:20px;">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:start; gap:16px; margin-bottom:16px;">
+          <div>
+            <h3 id="od-campaign-title" style="font-size:1.4rem; font-weight:700; margin-bottom:8px; color:var(--text);">—</h3>
+            <p id="od-campaign-desc" style="color:var(--text-secondary); line-height:1.6; font-size:0.95rem; margin-bottom:16px;">—</p>
+          </div>
+          <div style="text-align:right; min-width:120px;">
+            <span style="font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.05em; display:block;">Reward Pool</span>
+            <span id="od-campaign-budget" style="font-size:1.8rem; font-weight:800; color:var(--gold);" class="text-gold">$0.00</span>
+          </div>
+        </div>
+        
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:16px; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px; font-size:0.85rem;">
+          <div>
+            <span style="color:var(--text-secondary); display:block; margin-bottom:4px;"><i class='bx bx-user'></i> Client / Host</span>
+            <strong id="od-campaign-client" style="color:var(--text);">—</strong>
+          </div>
+          <div>
+            <span style="color:var(--text-secondary); display:block; margin-bottom:4px;"><i class='bx bx-calendar'></i> Deadline</span>
+            <strong id="od-campaign-deadline" style="color:var(--text);">—</strong>
+          </div>
+          <div>
+            <span style="color:var(--text-secondary); display:block; margin-bottom:4px;"><i class='bx bx-purchase-tag-alt'></i> Tags</span>
+            <div id="od-campaign-tags" style="display:flex; flex-wrap:wrap; gap:6px;">—</div>
+          </div>
+        </div>
+        
+        <!-- Take Offer Option for Designers -->
+        <div id="od-accept-container" style="display:none; margin-top:20px; border-top:1px solid rgba(255,255,255,0.08); padding-top:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin:0;">Are you a designer? Accept this project to submit your design works and compete for the reward pool!</p>
+            <button id="od-accept-btn" class="btn btn-gold" style="white-space:nowrap; padding: 10px 20px;">
+              <i class='bx bx-check-circle'></i> Take Offer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submissions Section -->
+      <div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+          <h3 style="font-size:1.2rem; font-weight:700; margin:0;"><i class='bx bx-grid-alt' style="color:var(--gold);"></i> Design Submissions (<span id="od-submissions-count">0</span>)</h3>
+          <div id="od-submit-work-container" style="display:none;">
+            <button id="od-submit-work-btn" class="btn btn-primary btn-sm">
+              <i class='bx bx-upload'></i> Submit Your Work
+            </button>
+          </div>
+        </div>
+        <div id="od-submissions-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">
+          <!-- Injected dynamically -->
+          <div style="grid-column: 1 / -1; text-align:center; padding:40px; color:var(--text-secondary);">
+            <i class='bx bx-palette' style="font-size:3rem; opacity:0.3; margin-bottom:12px; display:block;"></i>
+            No designs submitted yet. Be the first to submit!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Designer Profile Modal -->
+<div id="designer-profile-modal" class="modal-overlay">
+  <div class="modal-content glass" style="max-width:800px; width:90%; padding:20px; overflow-y:auto; max-height:85vh; border: 1px solid rgba(212,175,55,0.2);">
+    <div class="modal-header" style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:15px; margin-bottom:20px;">
+      <h2><i class='bx bx-palette' style="color:var(--gold);"></i> Designer Portfolio</h2>
+      <button class="btn-icon close-modal-btn" onclick="closeDesignerProfile()"><i class='bx bx-x'></i></button>
+    </div>
+    <div id="designer-portfolio-container">
+      <!-- Injected by PortfolioProfile.init -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Lightbox Modal -->
+<div id="lightbox-modal" class="modal-overlay" style="z-index:9999; background:rgba(0,0,0,0.95); display:none; align-items:center; justify-content:center; padding:10px;">
+  <button class="btn-icon" id="lightbox-close-btn" style="position:absolute; top:20px; right:20px; font-size:2rem; color:#fff; background:transparent; border:none; cursor:pointer;" aria-label="Close lightbox">
+    <i class='bx bx-x'></i>
+  </button>
+  <button class="btn-icon" id="lightbox-prev-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); font-size:2.5rem; color:#fff; background:rgba(0,0,0,0.3); border:none; border-radius:50%; width:50px; height:50px; cursor:pointer; display:flex; align-items:center; justify-content:center;" aria-label="Previous image">
+    <i class='bx bx-chevron-left'></i>
+  </button>
+  <button class="btn-icon" id="lightbox-next-btn" style="position:absolute; right:20px; top:50%; transform:translateY(-50%); font-size:2.5rem; color:#fff; background:rgba(0,0,0,0.3); border:none; border-radius:50%; width:50px; height:50px; cursor:pointer; display:flex; align-items:center; justify-content:center;" aria-label="Next image">
+    <i class='bx bx-chevron-right'></i>
+  </button>
+  
+  <div id="lightbox-content" style="max-width:90%; max-height:90%; display:flex; align-items:center; justify-content:center; position:relative;">
+    <!-- Rendered dynamically -->
+  </div>
+  
+  <div id="lightbox-counter" style="position:absolute; bottom:20px; color:#fff; font-family:'DM Sans', sans-serif; font-size:0.9rem;">
+    <!-- Dynamic counter, e.g. 1 / 5 -->
+  </div>
+</div>
+
+<script src="main.js?v=3.0"></script>
+</body>
+</html>
